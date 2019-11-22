@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 export const HTTP = axios.create({
-  baseURL: `http://jsonplaceholder.typicode.com/`,
-  headers: {
-    Authorization: 'Bearer {token}'
+  baseURL: 'http://localhost:8080/',
+  auth: {
+    username: 'admin',
+    password: 'quero10'
+    },
   }
-})
+)

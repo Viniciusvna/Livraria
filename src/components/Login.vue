@@ -49,7 +49,7 @@ export default {
     auth() {
       if(this.login.email == "admin" && this.login.password == "quero10"){
         this.login.resultado = ""
-        this.$router.push({ path: '/Clientes' })
+        this.$router.push({ path: '/Menu' })
       }else{
         this.login.resultado = "Usuario ou senha incorretos!";
       }
