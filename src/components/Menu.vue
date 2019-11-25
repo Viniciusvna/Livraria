@@ -1,36 +1,40 @@
 <template>
-  <div>
-    <md-card>
-      <md-card-header>
-        <div class="md-title">Sistema bibliotecário</div>
-      </md-card-header>
+  <v-card
+    class="mx-auto"
+    max-width="500"
+    min-height="200"
+    outlined
+  >
+    <v-list-item >
+      <v-list-item-content>
+        <div class="overline mb-4">Sistema Bibliotécario</div>
+        <v-list-item-title class="headline mb-1">Feito com Spring Boot Java e Vue.js</v-list-item-title>
+        <v-list-item-subtitle>
+          Equipe:<br/>
+          Ícaro Ibernon<br/>
+          Eliwelton<br/>
+          Vinicíus<br/>
+          Edigardo<br/>
+          Péricles<br/>
+          Daniel
+          
+          
+        </v-list-item-subtitle>
+      </v-list-item-content>
 
-      <md-card-content>
-          Equipe:
-          <ul>
-              <li>Ícaro Ibernon</li>
-              <li>Eliwelton</li>
-              <li>Vinicíus</li>
-              <li>Edigardo</li>
-          </ul>
-          Descrição: Sistema simples para manter salvo em um banco de dados clientes e livros que esses clientes possuem.
-     </md-card-content>
-
-      <md-card-actions>
-        <md-button @click="sair">Sair</md-button>
-        <md-button @click="clientes">Clientes</md-button>
-        <md-button @click="livros">Livros</md-button>
-      </md-card-actions>
-    </md-card>
-  </div>
+      
+    </v-list-item>
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn text @click="sair">Sair</v-btn>
+      <v-btn text @click="clientes">Clientes</v-btn>
+      <v-btn text @click="livros">Livros</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <style lang="scss" scoped>
-  .md-card {
-    margin: 20px;
-    display: inline-block;
-    vertical-align: top;
-  }
+  
 </style>
 
 <script>

@@ -1,23 +1,38 @@
 <template>
 <div>
-  <p>{{response}}</p>
   <ul style="list-style-type:none">
-    <li >
-      <md-card v-for="post of posts" :key="post">
-        <md-card-header>
-          <div class="md-title"><p><strong>{{post.nome}}</strong></p></div>
-        </md-card-header>
-        <md-card-content><p>{{post.body}}</p></md-card-content>
-        <md-card-actions>
-          <md-button >Alterar</md-button>
-          <md-button>Deletar</md-button>
-        </md-card-actions>
-      </md-card>
+    <li>
+       <v-card
+    v-for="post of posts" :key="post"
+    class="mx-auto"
+    max-width="344"
+    outlined
+  >
+    <v-list-item three-line>
+      <v-list-item-content>
+        <div class="overline mb-4">CLIENTE</div>
+        <v-list-item-title class="headline mb-1">{{post.nome}}</v-list-item-title>
+        <v-list-item-subtitle>{{post.livros}}</v-list-item-subtitle>
+      </v-list-item-content>
+
+      <v-list-item-avatar
+        tile
+        size="80"
+        color="grey"
+      ></v-list-item-avatar>
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn text>Deletar</v-btn>
+      <v-btn text>Alterar</v-btn>
+    </v-card-actions>
+  </v-card>
     </li>
   </ul>
   <div>
-    <md-button class="md-raised" @click="voltar">Voltar</md-button>
-    <md-button class="md-raised">Adicionar</md-button>
+    <v-btn text @click="voltar">Voltar</v-btn>
+    <v-btn text >Adicionar</v-btn>
+    <FormC/>
   </div>
 </div>
 </template>
@@ -25,8 +40,9 @@
 
 <script>
 import {HTTP} from '@/components/call.js';
-
+import FormC from "@/components/FormC.vue";
 export default {
+  components:{FormC},
   data() {
     return {
       posts: [],
@@ -35,7 +51,7 @@ export default {
   },
 
   created() {
-    HTTP.get('api/exibir').then(response => {
+    HTTP.get('exibir').then(response => {
       this.posts = response.data
     })
     .catch(e => {
@@ -51,10 +67,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .md-card {
-    width: 400px;
-    margin: 4px;
-    display: inline-block;
-    vertical-align: top;
-  }
+
 </style>
