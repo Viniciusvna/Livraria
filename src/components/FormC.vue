@@ -14,10 +14,15 @@
       max-width="290"
     >
       <v-card>
-        <v-card-title class="headline">Use Google's location service?</v-card-title>
+        <v-card-title class="headline">Adicionar</v-card-title>
 
         <v-card-text>
-          Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
+           <v-text-field
+            v-model="name"
+            :rules="nameRules"
+            label="Nome"
+            required
+          ></v-text-field>
         </v-card-text>
 
         <v-card-actions>
@@ -28,15 +33,15 @@
             text
             @click="dialog = false"
           >
-            Disagree
+            Cancelar
           </v-btn>
 
           <v-btn
             color="green darken-1"
             text
-            @click="dialog = false"
+            @click="postar"
           >
-            Agree
+            Enviar
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -46,11 +51,25 @@
 </template>
 
 <script>
+import {HTTP} from '@/components/call.js';
+
   export default {
     data () {
       return {
+        name: "",
         dialog: false,
+        nameRules: [
+        v => !!v || 'Nome obrigatório']
       }
     },
+    methods: {
+      postar(){
+        if(this.name.length > 0){
+          this.dialog = false
+          HTTP.post('cliente',{id: 0,nome: this.name})
+        }
+      }
+    }
   }
+
 </script> 

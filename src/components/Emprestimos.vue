@@ -1,5 +1,7 @@
 <template>
 <div>
+  <ul style="list-style-type:none">
+    <li>
        <v-card
     v-for="post of posts" :key="post"
     class="mx-auto"
@@ -8,42 +10,28 @@
   >
     <v-list-item three-line>
       <v-list-item-content>
-        <div class="overline mb-4">CLIENTE</div>
+        <div class="overline mb-4">EMPRESTIMOS</div>
         <v-list-item-title class="headline mb-1">{{post.nome}}</v-list-item-title>
+        <v-list-item-subtitle>{{post.livros}}</v-list-item-subtitle>
       </v-list-item-content>
 
-      
+      <v-list-item-avatar
+        tile
+        size="80"
+        color="grey"
+      ></v-list-item-avatar>
     </v-list-item>
 
     <v-card-actions>
-      <v-btn text @click="del = true">Deletar</v-btn>
-      <v-btn text @click="alt = true">Alterar</v-btn>
+      <v-btn text>Deletar</v-btn>
+      <v-btn text>Alterar</v-btn>
     </v-card-actions>
-    <v-dialog
-  v-model="alt"
-  max-width="290" >
-    <v-card>
-    <v-card-title class="headline">Alterar</v-card-title>
-    <v-card-text>Alterar - {{post.nome}}</v-card-text>
-    </v-card>
-  </v-dialog>
   </v-card>
-  
-
-  <v-dialog
-  v-model="del"
-  max-width="290" >
-    <v-card>
-    <v-card-title class="headline">Deletar</v-card-title>
-    <v-card-text>Deseja mesmo deletar?</v-card-text>
-    <v-btn text @click="del = false">Não</v-btn>
-    <v-btn text @click="del = false">Sim</v-btn>
-    </v-card>
-  </v-dialog>
+    </li>
+  </ul>
   <div>
     <v-btn text @click="voltar">Voltar</v-btn>
     <v-btn text >Adicionar</v-btn>
-    <FormC/>
   </div>
 </div>
 </template>
@@ -51,20 +39,17 @@
 
 <script>
 import {HTTP} from '@/components/call.js';
-import FormC from "@/components/FormC.vue";
+
 export default {
-  components:{FormC},
   data() {
     return {
-      alt: false,
-      del: false,
       posts: [],
       errors: []
     }
   },
 
   created() {
-    HTTP.get('clientes').then(response => {
+    HTTP.get('exibir').then(response => {
       this.posts = response.data
     })
     .catch(e => {
@@ -80,6 +65,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 
 </style>
