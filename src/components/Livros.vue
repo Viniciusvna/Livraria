@@ -1,17 +1,12 @@
 <template>
 <div>
-  <ul >
-    <li>
-       <v-card
-    v-for="post of posts" :key="post"
-    class="mx-auto"
-    max-width="344"
-    outlined
-  >
-    <v-list-item three-line>
+  <v-row >
+    <v-col v-for="post of posts" :key="post">
+    <v-card  max-width="230"  height="192" outlined>
+      <v-list-item three-line>
       <v-list-item-content>
-        <div class="overline mb-4">LIVRO</div>
-        <v-list-item-title class="headline mb-1">{{post.titulo}} - {{post.autor}}</v-list-item-title>
+        <div class="overline mb-4"><strong>{{post.titulo}}</strong></div>
+        <v-list-item-subtitle>{{post.autor}}</v-list-item-subtitle>
         <v-list-item-subtitle>{{post.cliente.nome}}</v-list-item-subtitle>
       </v-list-item-content>
 
@@ -20,19 +15,18 @@
         size="80"
         color="black"
       ></v-list-item-avatar>
-    </v-list-item>
+      </v-list-item>
 
-    <v-card-actions>
-      <v-btn text>Deletar</v-btn>
-      <v-btn text>Alterar</v-btn>
-    </v-card-actions>
-  </v-card>
-    </li>
-  </ul>
+      <v-card-actions>
+        <v-btn text>Deletar</v-btn>
+        <v-btn text>Alterar</v-btn>
+      </v-card-actions>
+    </v-card>
+    </v-col>
+  </v-row>
   <div>
     <v-btn text @click="voltar">Voltar</v-btn>
     <v-btn text >Adicionar</v-btn>
-    <FormL/>
   </div>
 </div>
 </template>
@@ -40,9 +34,7 @@
 
 <script>
 import {HTTP} from '@/components/call.js';
-import FormL from "@/components/FormL.vue";
 export default {
-  components: {FormL},
   data() {
     return {
       posts: [],

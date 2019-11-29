@@ -1,49 +1,26 @@
 <template>
 <div>
-       <v-card
-    v-for="post of posts" :key="post"
-    class="mx-auto"
-    max-width="344"
-    outlined
-  >
-    <v-list-item three-line>
-      <v-list-item-content>
-        <div class="overline mb-4">CLIENTE</div>
-        <v-list-item-title class="headline mb-1">{{post.nome}}</v-list-item-title>
-      </v-list-item-content>
+  <v-row >
+    <v-col v-for="post of posts" :key="post">
+      <v-card  max-width="180" outlined>
 
-      
-    </v-list-item>
+          <v-list-item three-line>
+            <v-list-item-content>
+              <div class="overline mb-4">CLIENTE - {{post.id}}</div>
+              <v-list-item-title class="headline mb-1">{{post.nome}}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
 
-    <v-card-actions>
-      <v-btn text @click="del = true">Deletar</v-btn>
-      <v-btn text @click="alt = true">Alterar</v-btn>
-    </v-card-actions>
-    <v-dialog
-  v-model="alt"
-  max-width="290" >
-    <v-card>
-    <v-card-title class="headline">Alterar</v-card-title>
-    <v-card-text>Alterar - {{post.nome}}</v-card-text>
-    </v-card>
-  </v-dialog>
-  </v-card>
-  
-
-  <v-dialog
-  v-model="del"
-  max-width="290" >
-    <v-card>
-    <v-card-title class="headline">Deletar</v-card-title>
-    <v-card-text>Deseja mesmo deletar?</v-card-text>
-    <v-btn text @click="del = false">Não</v-btn>
-    <v-btn text @click="del = false">Sim</v-btn>
-    </v-card>
-  </v-dialog>
+          <v-card-actions>
+            <v-btn text >Deletar</v-btn>
+            <v-btn text >Alterar</v-btn>
+          </v-card-actions>
+      </v-card>
+    </v-col>
+  </v-row>
   <div>
-    <v-btn text @click="voltar">Voltar</v-btn>
-    <v-btn text >Adicionar</v-btn>
-    <FormC/>
+      <v-btn text @click="voltar">Voltar</v-btn>
+      <v-btn text >Adicionar</v-btn>
   </div>
 </div>
 </template>
@@ -51,9 +28,7 @@
 
 <script>
 import {HTTP} from '@/components/call.js';
-import FormC from "@/components/FormC.vue";
 export default {
-  components:{FormC},
   data() {
     return {
       alt: false,
