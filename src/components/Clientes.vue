@@ -19,20 +19,22 @@
     </v-col>
   </v-row>
   <div>
+    <v-row>
       <v-btn text @click="voltar">Voltar</v-btn>
-      <v-btn text >Adicionar</v-btn>
-  </div>
+      <FormC/>
+    </v-row>
+    </div>
 </div>
 </template>
 
 
 <script>
 import {HTTP} from '@/components/call.js';
+import FormC from '@/components/FormC.vue';
 export default {
+  components: {FormC},
   data() {
     return {
-      alt: false,
-      del: false,
       posts: [],
       errors: []
     }

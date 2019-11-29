@@ -25,8 +25,10 @@
     </v-col>
   </v-row>
   <div>
-    <v-btn text @click="voltar">Voltar</v-btn>
-    <v-btn text >Adicionar</v-btn>
+    <v-row>
+      <v-btn text @click="voltar">Voltar</v-btn>
+      <FormL/>
+    </v-row>
   </div>
 </div>
 </template>
@@ -34,7 +36,9 @@
 
 <script>
 import {HTTP} from '@/components/call.js';
+import FormL from '@/components/FormL.vue';
 export default {
+  components: {FormL},
   data() {
     return {
       posts: [],
