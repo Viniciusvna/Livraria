@@ -26,7 +26,6 @@
   </v-row>
   <div>
     <v-btn text @click="voltar">Voltar</v-btn>
-    <v-btn text >Adicionar</v-btn>
   </div>
 </div>
 </template>

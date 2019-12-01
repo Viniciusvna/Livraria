@@ -27,7 +27,7 @@
   <div>
     <v-row>
       <v-btn text @click="voltar">Voltar</v-btn>
-      <FormL/>
+      <v-btn text @click="adicionar">Adicionar</v-btn>
     </v-row>
   </div>
 </div>
@@ -36,9 +36,7 @@
 
 <script>
 import {HTTP} from '@/components/call.js';
-import FormL from '@/components/FormL.vue';
 export default {
-  components: {FormL},
   data() {
     return {
       posts: [],
@@ -54,6 +52,9 @@ export default {
     })
   },
   methods: {
+    adicionar(){
+      this.$router.push({ path: '/AddL' })
+    },
     voltar(){
       this.$router.push({ path: '/Menu' })
     }

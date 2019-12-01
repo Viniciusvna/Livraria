@@ -1,6 +1,6 @@
 <template>
-  <v-card>
-    <v-card-title class="headline">Adicionar cliente</v-card-title>
+<v-card>
+    <v-card-title class="headline">Alterar Cliente - {{id}}</v-card-title>
     <v-form v-model="valid">
       <v-container>
         <v-row>
@@ -32,17 +32,28 @@ import { HTTP } from "@/components/call.js";
 export default {
   data() {
     return {
-      nome: "",
+      nome: '',
+      id: this.$route.params.id,
       nameRules: [v => !!v || "Nome é obrigatorio"]
     };
   },
+  created() {
+    HTTP.get('cliente/'+this.$route.params.id).then(response => {
+      this.post = response.data
+      this.nome = this.post.nome
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+  },
   methods: {
     enviar() {
-      HTTP.post("cliente", { id: "0", nome: this.nome });
+      HTTP.put("cliente", { id: this.id , nome: this.nome });
+      this.$router.push({ path: "/Clientes" });
     },
     voltar() {
       this.$router.push({ path: "/Clientes" });
     }
   }
-};
+}
 </script>

@@ -54,26 +54,32 @@
 </template>
 
 <script>
-import {HTTP} from '@/components/call.js';
-  export default {
-    data () {
-      return {
-        dialog: false,
-        titulo:'',
-        autor:'',
-        cliente:'',
-        nameRules: [
-      v => !!v || 'Campo é obrigatorio!']
-      }
+import { HTTP } from "@/components/call.js";
+export default {
+  data() {
+    return {
+      nome: '',
+      id: this.$route.params.id,
+      nameRules: [v => !!v || "Nome é obrigatorio"]
+    };
+  },
+  created() {
+    HTTP.get('cliente/'+this.$route.params.id).then(response => {
+      this.post = response.data
+      this.nome = this.post.nome
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+  },
+  methods: {
+    enviar() {
+      HTTP.put("cliente", { id: this.id , nome: this.nome });
+      this.$router.push({ path: "/Clientes" });
     },
-    methods: {
-        enviar(){
-            HTTP.post('livro', {id: '0',nome: this.nome});
-            this.dialog = false;
-        },
-        voltar(){
-      this.$router.push({ path: '/Livros' })
-    }
+    voltar() {
+      this.$router.push({ path: "/Clientes" });
     }
   }
+}
 </script>

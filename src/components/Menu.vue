@@ -28,7 +28,6 @@
       <v-spacer></v-spacer>
       <v-btn text @click="sair">Sair</v-btn>
       <v-btn text @click="clientes">Clientes</v-btn>
-      <v-btn text @click="emprestimos">Emprestimos</v-btn>
       <v-btn text @click="livros">Livros</v-btn>
     </v-card-actions>
   </v-card>

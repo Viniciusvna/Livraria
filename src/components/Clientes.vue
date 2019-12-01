@@ -12,8 +12,8 @@
           </v-list-item>
 
           <v-card-actions>
-            <v-btn text >Deletar</v-btn>
-            <v-btn text >Alterar</v-btn>
+            <v-btn text @click="deletar(post.id)">Deletar</v-btn>
+            <v-btn text @click="alterar(post.id)">Alterar</v-btn>
           </v-card-actions>
       </v-card>
     </v-col>
@@ -21,7 +21,7 @@
   <div>
     <v-row>
       <v-btn text @click="voltar">Voltar</v-btn>
-      <FormC/>
+      <v-btn text @click="adicionar">Adicionar</v-btn>
     </v-row>
     </div>
 </div>
@@ -30,9 +30,7 @@
 
 <script>
 import {HTTP} from '@/components/call.js';
-import FormC from '@/components/FormC.vue';
 export default {
-  components: {FormC},
   data() {
     return {
       posts: [],
@@ -51,6 +49,15 @@ export default {
   methods: {
     voltar(){
       this.$router.push({ path: '/Menu' })
+    },
+    adicionar(){
+      this.$router.push({ path: '/AddC' })
+    },
+    alterar(id) {
+      this.$router.push({ path: "/AltC/"+id });
+    },
+    deletar(id) {
+      this.$router.push({ path: "/DelC/"+id });
     }
   }
 }
