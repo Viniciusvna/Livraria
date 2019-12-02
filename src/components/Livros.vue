@@ -18,8 +18,8 @@
       </v-list-item>
 
       <v-card-actions>
-        <v-btn text>Deletar</v-btn>
-        <v-btn text>Alterar</v-btn>
+        <v-btn text @click="deletar(post.id)">Deletar</v-btn>
+        <v-btn text @click="alterar(post.id)">Alterar</v-btn>
       </v-card-actions>
     </v-card>
     </v-col>
@@ -57,6 +57,12 @@ export default {
     },
     voltar(){
       this.$router.push({ path: '/Menu' })
+    },
+    alterar(id) {
+      this.$router.push({ path: "/AltL/"+id });
+    },
+    deletar(id) {
+      this.$router.push({ path: "/DelL/"+id });
     }
   }
 }

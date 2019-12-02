@@ -1,6 +1,6 @@
 <template>
 <v-card>
-    <v-card-title class="headline">Deseja mesmo deletar Cliente:<br>{{id}}-{{post.nome}}</v-card-title>
+    <v-card-title class="headline">Deseja mesmo deletar Livro:<br>{{id}}-{{post.titulo}}</v-card-title>
     
     <v-card-actions>
       <v-spacer></v-spacer>
@@ -24,7 +24,7 @@ export default {
     };
   },
   created() {
-    HTTP.get('cliente/'+this.$route.params.id).then(response => {
+    HTTP.get('livro/'+this.$route.params.id).then(response => {
       this.post = response.data
     })
     .catch(e => {
@@ -33,11 +33,11 @@ export default {
   },
   methods: {
     deletar() {
-      HTTP.delete('cliente', { data:  this.post  });
-      this.$router.push({ path: "/Clientes" });
+      HTTP.delete('livro', { data:  this.post  });
+      this.$router.push({ path: "/Livros" });
     },
     voltar() {
-      this.$router.push({ path: "/Clientes" });
+      this.$router.push({ path: "/Livros" });
     }
   }
 }
