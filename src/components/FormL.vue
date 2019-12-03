@@ -57,7 +57,6 @@
             Enviar
           </v-btn>
         </v-card-actions>
-        <p>{{select}}</p>
       </v-card>
 </template>
 
@@ -88,6 +87,8 @@ import {HTTP} from '@/components/call.js';
       this.errors.push(e)
     })
     ,
+    //pega as informações e ajeita para serem usadas no dropdown de forma que só seja possivel adicionar livro a um
+    //cliente que existe
     HTTP.get('clientes').then(responseC => {
       this.nomes = responseC.data
       const myData = this.nomes

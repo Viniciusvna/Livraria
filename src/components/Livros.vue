@@ -5,7 +5,7 @@
     <v-card  max-width="230"  height="192" outlined>
       <v-list-item three-line>
       <v-list-item-content>
-        <div class="overline mb-4"><strong>{{post.titulo}}</strong></div>
+        <div class="overline mb-4"><strong>{{post.id}} - {{post.titulo}}</strong></div>
         <v-list-item-subtitle>{{post.autor}}</v-list-item-subtitle>
         <v-list-item-subtitle>{{post.cliente.nome}}</v-list-item-subtitle>
       </v-list-item-content>

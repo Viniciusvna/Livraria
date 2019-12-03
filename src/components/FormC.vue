@@ -36,9 +36,11 @@ export default {
       nameRules: [v => !!v || "Nome é obrigatorio"]
     };
   },
+  //metodo para fazer o post do cliente
   methods: {
     enviar() {
       HTTP.post("cliente", { id: "0", nome: this.nome });
+      this.$router.push({ path: "/Clientes" });
     },
     voltar() {
       this.$router.push({ path: "/Clientes" });
