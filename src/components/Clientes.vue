@@ -37,7 +37,7 @@ export default {
       errors: []
     }
   },
-
+  //procedimentos feitos antes do carregar da pagina
   created() {
     HTTP.get('clientes').then(response => {
       this.posts = response.data
@@ -46,6 +46,7 @@ export default {
       this.errors.push(e)
     })
   },
+  // Funcões acionadas por botões e que são as rotas da aplicação
   methods: {
     voltar(){
       this.$router.push({ path: '/Menu' })

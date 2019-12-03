@@ -28,6 +28,7 @@
 </template>
 
 <script>
+//formulario de alterar o cliente
 import { HTTP } from "@/components/call.js";
 export default {
   data() {
@@ -37,6 +38,7 @@ export default {
       nameRules: [v => !!v || "Nome é obrigatorio"]
     };
   },
+  //pega as informações do cliente individual
   created() {
     HTTP.get('cliente/'+this.$route.params.id).then(response => {
       this.post = response.data
